@@ -18,7 +18,10 @@ class Feature :
         self.type = tp
         for e in elements:
             if e['type'] == self.type :
-                self.name = e['tags']['name']
+                if 'name' in e['tags'] :
+                    self.name = e['tags']['name']
+                else:
+                    self.name = ''
                 break
     def geometry(self) -> Point | LineString | Polygon | GeometryCollection:
         if self.type == 'node' :
